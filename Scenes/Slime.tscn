@@ -1,0 +1,57 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Assets/Slime/slime_right_3.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Slime/slime_right_2.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Slime/slime_left_2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Slime/slime_left_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Slime/slime_left_3.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Slime/slime_right_1.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Slime/slime_up_3.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Slime/slime_down_3.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Slime/slime_up_1.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Slime/slime_up_2.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Slime/slime_down_2.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Slime/slime_down_1.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Slime.gd" type="Script" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 11 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "Down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Right",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+
+[node name="Slime" type="RigidBody2D" groups=[
+"Slime",
+]]
+mode = 2
+gravity_scale = 0.0
+contact_monitor = true
+script = ExtResource( 13 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "Down"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
