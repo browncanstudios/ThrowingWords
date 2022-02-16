@@ -1,7 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Font/kongtext.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Scenes/GUI.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
@@ -24,19 +28,32 @@ __meta__ = {
 
 [node name="Top" type="MarginContainer" parent="."]
 anchor_right = 1.0
+margin_left = 8.0
 margin_top = 8.0
+margin_right = -8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Score" type="HBoxContainer" parent="Top"]
+margin_right = 624.0
+margin_bottom = 16.0
+
+[node name="Label" type="Label" parent="Top/Score"]
+margin_top = 4.0
+margin_right = 64.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 4 )
+text = "SCORE: 0"
+
 [node name="Hint" type="HBoxContainer" parent="Top"]
-margin_right = 640.0
+margin_right = 624.0
 margin_bottom = 16.0
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Top/Hint"]
-margin_left = 224.0
-margin_right = 416.0
+margin_left = 216.0
+margin_right = 408.0
 margin_bottom = 16.0
 
 [node name="Label" type="Label" parent="Top/Hint/HBoxContainer"]
@@ -69,7 +86,7 @@ margin_right = 624.0
 margin_bottom = 8.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
-text = "ATTACK WORDS: "
+text = "ATTACK WORDS:"
 
 [node name="Transcript" type="HBoxContainer" parent="Bottom/VBoxContainer"]
 margin_top = 12.0

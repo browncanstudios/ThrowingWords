@@ -7,7 +7,7 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 275, 170 )
+extents = Vector2( 275, 145 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -25,7 +25,7 @@ current = true
 [node name="GUI" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="SpawnArea" type="Area2D" parent="."]
-position = Vector2( 320, 215 )
+position = Vector2( 320, 190 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea"]
 shape = SubResource( 1 )
@@ -37,5 +37,9 @@ autostart = true
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( 320, 240 )
 
+[node name="ScoreTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="processed_message_received" from="SpeechProcessor" to="." method="_on_SpeechProcessor_processed_message_received"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

@@ -6,6 +6,8 @@ export var speed = 200
 var velocity = Vector2(0.0, 0.0)
 var direction = Vector2(0.0, 1.0)
 
+var score = 0
+
 func _physics_process(_delta):
 	# movement using key presses
 	if Input.is_key_pressed(KEY_A) or Input.is_key_pressed(KEY_LEFT):
@@ -30,7 +32,12 @@ func _physics_process(_delta):
 	# this function actually moves the character, and correctly
 	# handles collisions with basic objects like tiles
 	var returned_velocity = move_and_slide(velocity, Vector2(0, 0), false, 4, 0, false)
-	
+
+	for object in get_slide_count():
+		var collision = get_slide_collision(object)
+		if collision.collider.is_in_group("Slime"):
+			score = 0
+
 	if abs(returned_velocity.x) > abs(returned_velocity.y):
 		if returned_velocity.x > 0:
 			$AnimatedSprite.play("Right")
